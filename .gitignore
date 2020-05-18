@@ -257,6 +257,9 @@ paket-files/
 # CodeRush
 .cr/
 
+.cache/
+membersite-h5/public/
+
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
