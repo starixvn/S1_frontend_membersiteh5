@@ -3,7 +3,7 @@ import { UserLogin, UserLogout } from "../service/api/account";
 const isBrowser = typeof window !== `undefined`;
 
 const getUser = () => {
-	return window.localStorage.loginUser !== `undefined`
+	return window.localStorage.loginUser !== undefined && window.localStorage.loginUser !== `undefined`
 		? JSON.parse(window.localStorage.loginUser)
 		: {};
 };
@@ -35,6 +35,7 @@ export const login = async ({ username, password }, callback) => {
 
 export const isLoggedIn = () => {
 	if (!isBrowser) return false;
+	console.log(window.localStorage.loginUser)
 	const user = getUser();
 	return !!user.username;
 };
