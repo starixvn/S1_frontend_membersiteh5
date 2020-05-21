@@ -1,10 +1,4 @@
 module.exports = {
-	siteMetadata: {
-		title: `NOVA88`,
-		description: `Nova88 is the world leading sportsbook offering one of the kind gambling experience in live betting covering all sports, casino, slots, keno, esports, rng casino, fantasy sports, virtual sports, lottery, live casino, live dealer, bingo, and racing.`,
-		author: `@Nova88`,
-		siteStylePath: "Nova88"
-	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
 		{
@@ -14,7 +8,13 @@ module.exports = {
 				path: `${__dirname}/src/styles/Nova88/img`
 			}
 		},
-		`gatsby-transformer-sharp`,
+		{
+			resolve: "gatsby-plugin-html-attributes",
+			options: {
+				class: ""
+			}
+		},
+		`gatsby-transformer-sharp`
 		// `gatsby-plugin-sharp`,
 		// {
 		// 	resolve: `gatsby-plugin-manifest`,

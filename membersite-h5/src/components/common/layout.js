@@ -3,23 +3,31 @@ import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import Footer from "./footer";
 import Header from "./header";
+import "../../styles/Nova88/css/style-dark.css";
 import "../../styles/Nova88/css/style.css";
 import "../../styles/Nova88/css/font.css";
 
 const Layout = ({ children }) => {
-	const data = useStaticQuery(graphql`
-		query SiteTitleQuery {
-			site {
-				siteMetadata {
-					title
+	const { allSiteInfo } = useStaticQuery(
+		graphql`
+			query {
+				allSiteInfo(filter: { siteName: { eq: "Nova88" } }) {
+					nodes {
+						title
+						siteName
+						description
+					}
 				}
 			}
-		}
-	`);
+		`
+	);
+
+	let site = allSiteInfo.nodes[0];
 
 	return (
 		<div>
-			<Header siteTitle={data.site.siteMetadata.title} />
+			<Header siteTitle={site.title} />
+			<Header siteTitle="Nova88" />
 			<main style={{ position: "fixed" }}>{children}</main>
 			<Footer />
 		</div>

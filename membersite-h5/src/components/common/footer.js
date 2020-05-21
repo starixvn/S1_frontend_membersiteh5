@@ -1,49 +1,82 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "gatsby";
+import { Geti18n } from "../../service/language";
+import { userInfoContext } from "../context/userInfo";
 
 const Footer = () => {
-	return (
-		<footer>
-			<Link to="/">
-				<button className="open">
+	const { userInfo } = useContext(userInfoContext);
+	if (userInfo?.isLogin) {
+		return (
+			<footer>
+				<Link to="/" activeClassName="open">
 					<div className="circleAnimation">
 						<div className="icon icon-home"></div>
 					</div>
-					<span>HOME</span>
-				</button>
-			</Link>
+					<span>{Geti18n("lbl_Home")}</span>
+				</Link>
 
-			<Link to="/hello/">
-				<button className="">
+				<Link to="/promotion/" activeClassName="open">
 					<div className="circleAnimation">
 						<div className="icon icon-promotion"></div>
 					</div>
 					<span>PROMOTION</span>
-				</button>
-			</Link>
+				</Link>
 
-			<button className="">
-				<div className="circleAnimation">
-					<div className="icon icon-balance"></div>
-				</div>
-				<span>WALLET</span>
-			</button>
+				<Link to="/wallet/" activeClassName="open">
+					<div className="circleAnimation">
+						<div className="icon icon-balance"></div>
+					</div>
+					<span>WALLET</span>
+				</Link>
 
-			<button className="">
-				<div className="circleAnimation">
-					<div className="icon icon-contact"></div>
-				</div>
-				<span>LIVE CHAT</span>
-			</button>
+				<Link to="/livechat/" activeClassName="open">
+					<div className="circleAnimation">
+						<div className="icon icon-contact"></div>
+					</div>
+					<span>LIVE CHAT</span>
+				</Link>
 
-			<button className="">
-				<div className="circleAnimation">
-					<div className="icon icon-member"></div>
-				</div>
-				<span>MEMBER</span>
-			</button>
-		</footer>
-	);
+				<Link to="/member/" activeClassName="open">
+					<div className="circleAnimation">
+						<div className="icon icon-member"></div>
+					</div>
+					<span>MEMBER</span>
+				</Link>
+			</footer>
+		);
+	} else {
+		return (
+			<footer>
+				<Link to="/" activeClassName="open">
+					<div className="circleAnimation">
+						<div className="icon icon-home"></div>
+					</div>
+					<span>{Geti18n("lbl_Home")}</span>
+				</Link>
+
+				<Link to="/promotion/" activeClassName="open">
+					<div className="circleAnimation">
+						<div className="icon icon-promotion"></div>
+					</div>
+					<span>PROMOTION</span>
+				</Link>
+
+				<Link to="/wallet/" activeClassName="open">
+					<div className="circleAnimation">
+						<div className="icon icon-balance"></div>
+					</div>
+					<span>WALLET</span>
+				</Link>
+
+				<Link to="/livechat/" activeClassName="open">
+					<div className="circleAnimation">
+						<div className="icon icon-contact"></div>
+					</div>
+					<span>LIVE CHAT</span>
+				</Link>
+			</footer>
+		);
+	}
 };
 
 export default Footer;

@@ -1,23 +1,24 @@
 import React from "react";
+import { Geti18n } from "../../service/language";
 
 const ShortcutBar = () => {
 	return (
 		<div className="thBar">
 			<a className="icon icon-deposit">
-				<span>Deposit</span>
+				<span>{Geti18n("lbl_Deposit")}</span>
 			</a>
 			<a className="icon icon-transfer">
-				<span>Transfer</span>
+				<span>{Geti18n("lbl_Transfer")}</span>
 			</a>
 			<a className="icon icon-withdrawal">
-				<span>Withdrawal</span>
+				<span>{Geti18n("lbl_Withdrawal")}</span>
 			</a>
 			<a className="icon icon-email">
-				<span>Email</span>
+				<span>{Geti18n("lbl_Email")}</span>
 			</a>
-			<a className="icon icon-vip">
+			{/* <a className="icon icon-vip">
 				<span>VIP LV100</span>
-			</a>
+			</a> */}
 		</div>
 	);
 };

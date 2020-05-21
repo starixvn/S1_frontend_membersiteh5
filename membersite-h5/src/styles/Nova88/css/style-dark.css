@@ -1,68 +1,68 @@
-header {
+html.dark header {
   background: #191919;
   border-bottom: 1px solid #ff5d00;
 }
 
-header button:nth-child(2) {
+html.dark header button:nth-child(2) {
   background: #ff5d00;
 }
 
-header .subMenu {
+html.dark header .subMenu {
   background: rgba(25, 25, 25, 0.95);
 }
 
-main .marquee {
+html.dark main .marquee {
   color: #f3f3f3;
   background: #000;
 }
 
-main .marquee .icon {
+html.dark main .marquee .icon {
   color: #ff5d00;
 }
 
-main .sideBar {
+html.dark main .sideBar {
   background: #191919;
 }
 
-main .thBar {
+html.dark main .thBar {
   background: #191919;
 }
 
-main .thBar a {
+html.dark main .thBar a {
   color: #ff5d00;
   border-right: 1px solid #333;
 }
 
-main .thBar a.icon:before {
+html.dark main .thBar a.icon:before {
   color: #fff;
 }
 
-main .gameList a:after {
+html.dark main .gameList a:after {
   border-color: transparent #191919 #191919 transparent;
 }
 
-footer {
+html.dark footer {
   background: #333;
 }
 
-footer button {
+html.dark footer a {
   border-right: 1px solid #191919;
   border-bottom: 2px solid #191919;
 }
 
-footer button .circleAnimation {
+html.dark footer a .circleAnimation {
   color: #6f6f6f;
 }
 
-footer button.open {
+html.dark footer a.open {
   border-bottom: 2px solid #ff5d00;
 }
 
-footer button.open .circleAnimation {
-  background: url(../img/footerActiveDark.svg) no-repeat top center/cover;
+html.dark footer a.open .circleAnimation {
+  background: url(../img/footerActiveDark.svg) no-repeat top center/100% 100%;
 }
 
-footer button.open .circleAnimation + span {
+html.dark footer a.open .circleAnimation + span {
   color: #fff;
 }
 /*# sourceMappingURL=style-dark.css.map */

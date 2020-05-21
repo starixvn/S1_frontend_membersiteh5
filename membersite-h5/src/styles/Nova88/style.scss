@@ -146,14 +146,18 @@ header {
           right: 3vw;
           transform: translateY(100%);
         }
+        &.open .dropdown-container{
+          display: block;
+        }
         >.dropdown-container{
           display: none;
-          &.open{
-            display: block;
-          }
           .dropdown-item{
             padding: 3vw 0 0;
           }
+        }
+        >.btn{
+          width: 100%;
+          display: block;
         }
       }
       >input{
@@ -180,11 +184,37 @@ header {
           opacity: 1;
         }
       }
+      >.icon-module{
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
       i.icon{
         position: absolute;
         transform: translateY(60%);
         left: 2vw;
         top: 0;
+        &.icon-eye,&.icon-eye-blocked{
+          display: none;
+        }
+        &.icon-key + input + div > .icon-eye{
+          display: inline-block;
+          position: initial;
+          margin-right: 2vw;
+        }        
+        &.icon-key + input + div > .icon-eye-blocked{
+          display: inline-block;
+          position: initial;
+          margin-right: 2vw;
+        }
+        &.icon-warning{
+          position: initial;
+          margin-right: 2vw;
+          display: inline-block;
+          &.open{
+            display: none;
+          }
+        }
       }
     }
     button{
@@ -550,7 +580,7 @@ footer {
   background: $White;
   display: flex;
   height: 12.8vw;
-  >button {
+  >a {
     flex: 1 1 0;
     text-align: center;
     border-right: 1px solid $Gray;
@@ -670,7 +700,6 @@ footer {
     transform: scale(1);
   }
 }
- 
 @keyframes marquee {
   0% {
     opacity: 0;
@@ -685,12 +714,50 @@ footer {
     transform:translateY(0px);
   }
 }
-
 @keyframes gl {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+#popup{
+  width: calc(100% - 16vw);
+  height: calc(100% - 16vw);
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: $White;
+  background: rgba($Blue, 0.95);
+  padding: 8vw;
+  display: none;
+  &.show{
+    display: flex;
+  }
+  >div{
+    border: 1px solid  $Orange;
+    padding: 2vw 4vw;
+  }
+  .close{
+    top: 4vw;
+    right: 2vw;
+  }
+  .popTit{
+    background: $Orange;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: relative;
+    font-size: 4vw;
+    padding-right: 9vw;
+  }
+  .popTxt{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    line-height: 7vw;
   }
 }

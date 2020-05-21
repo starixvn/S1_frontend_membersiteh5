@@ -119,4 +119,16 @@
 .icon-key2:before {
   content: "\e98e";
 }
+
+.icon-eye:before {
+  content: "\e9ce";
+}
+
+.icon-eye-blocked:before {
+  content: "\e9d1";
+}
+
+.icon-warning:before {
+  content: "\ea07";
+}
 /*# sourceMappingURL=font.css.map */

@@ -234,16 +234,21 @@ header .Join .inputBox > .dropdown:before, header .Login .inputBox > .dropdown:b
           transform: translateY(100%);
 }
 
+header .Join .inputBox > .dropdown.open .dropdown-container, header .Login .inputBox > .dropdown.open .dropdown-container {
+  display: block;
+}
+
 header .Join .inputBox > .dropdown > .dropdown-container, header .Login .inputBox > .dropdown > .dropdown-container {
   display: none;
 }
 
-header .Join .inputBox > .dropdown > .dropdown-container.open, header .Login .inputBox > .dropdown > .dropdown-container.open {
-  display: block;
-}
-
 header .Join .inputBox > .dropdown > .dropdown-container .dropdown-item, header .Login .inputBox > .dropdown > .dropdown-container .dropdown-item {
   padding: 3vw 0 0;
+}
+
+header .Join .inputBox > .dropdown > .btn, header .Login .inputBox > .dropdown > .btn {
+  width: 100%;
+  display: block;
 }
 
 header .Join .inputBox > input, header .Login .inputBox > input {
@@ -287,12 +292,44 @@ header .Join .inputBox .JoinRule.open, header .Join .inputBox .LoginRule.open, h
   opacity: 1;
 }
 
+header .Join .inputBox > .icon-module, header .Login .inputBox > .icon-module {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 header .Join .inputBox i.icon, header .Login .inputBox i.icon {
   position: absolute;
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
   left: 2vw;
   top: 0;
+}
+
+header .Join .inputBox i.icon.icon-eye, header .Join .inputBox i.icon.icon-eye-blocked, header .Login .inputBox i.icon.icon-eye, header .Login .inputBox i.icon.icon-eye-blocked {
+  display: none;
+}
+
+header .Join .inputBox i.icon.icon-key + input + div > .icon-eye, header .Login .inputBox i.icon.icon-key + input + div > .icon-eye {
+  display: inline-block;
+  position: initial;
+  margin-right: 2vw;
+}
+
+header .Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked, header .Login .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
+  display: inline-block;
+  position: initial;
+  margin-right: 2vw;
+}
+
+header .Join .inputBox i.icon.icon-warning, header .Login .inputBox i.icon.icon-warning {
+  position: initial;
+  margin-right: 2vw;
+  display: inline-block;
+}
+
+header .Join .inputBox i.icon.icon-warning.open, header .Login .inputBox i.icon.icon-warning.open {
+  display: none;
 }
 
 header .Join button, header .Login button {
@@ -818,7 +855,7 @@ footer {
   height: 12.8vw;
 }
 
-footer > button {
+footer > a {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0px;
           flex: 1 1 0;
@@ -839,7 +876,7 @@ footer > button {
   position: relative;
 }
 
-footer > button .circleAnimation {
+footer > a .circleAnimation {
   position: absolute;
   margin-top: -9vw;
   width: calc(20vw - 1px);
@@ -853,31 +890,31 @@ footer > button .circleAnimation {
   color: #001942;
 }
 
-footer > button .circleAnimation > div {
+footer > a .circleAnimation > div {
   position: relative;
   bottom: -11vw;
 }
 
-footer > button .circleAnimation > div:before {
+footer > a .circleAnimation > div:before {
   font-size: 7vw;
 }
 
-footer > button:last-child {
+footer > a:last-child {
   border-right: 0;
 }
 
-footer > button span {
+footer > a span {
   display: none;
 }
 
-footer > button.open {
+footer > a.open {
   border-bottom: 2px solid #ff5d00;
   color: #ff5d00;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 
-footer > button.open .circleAnimation {
+footer > a.open .circleAnimation {
   background: url(../img/footerActive.svg) no-repeat top center/100% 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -886,7 +923,7 @@ footer > button.open .circleAnimation {
   padding-top: 3.9vw;
 }
 
-footer > button.open .circleAnimation:before {
+footer > a.open .circleAnimation:before {
   content: '';
   border-radius: 100%;
   background: rgba(255, 93, 0, 0.33);
@@ -905,7 +942,7 @@ footer > button.open .circleAnimation:before {
   top: 50%;
 }
 
-footer > button.open .circleAnimation:after {
+footer > a.open .circleAnimation:after {
   content: '';
   border-radius: 100%;
   background: rgba(255, 93, 0, 0.66);
@@ -924,7 +961,7 @@ footer > button.open .circleAnimation:after {
   margin-left: -4.8vw;
 }
 
-footer > button.open .circleAnimation > div {
+footer > a.open .circleAnimation > div {
   border-radius: 100%;
   background: #ff5d00;
   width: 7.47vw;
@@ -943,11 +980,11 @@ footer > button.open .circleAnimation > div {
   position: initial;
 }
 
-footer > button.open .circleAnimation > div:before {
+footer > a.open .circleAnimation > div:before {
   font-size: 5vw;
 }
 
-footer > button.open .circleAnimation + span {
+footer > a.open .circleAnimation + span {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
   font-size: 3vw;
@@ -1067,5 +1104,59 @@ footer > button.open .circleAnimation + span {
   100% {
     opacity: 1;
   }
+}
+
+#popup {
+  width: calc(100% - 16vw);
+  height: calc(100% - 16vw);
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #fff;
+  background: rgba(0, 25, 66, 0.95);
+  padding: 8vw;
+  display: none;
+}
+
+#popup.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#popup > div {
+  border: 1px solid #ff5d00;
+  padding: 2vw 4vw;
+}
+
+#popup .close {
+  top: 4vw;
+  right: 2vw;
+}
+
+#popup .popTit {
+  background: #ff5d00;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  position: relative;
+  font-size: 4vw;
+  padding-right: 9vw;
+}
+
+#popup .popTxt {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  line-height: 7vw;
 }
 /*# sourceMappingURL=style.css.map */
