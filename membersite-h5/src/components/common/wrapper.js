@@ -19,8 +19,11 @@ export const Wrapper = ({ children, pageLangKeys, afterLogin }) => {
 				}
 			},
 			err => {
-				console.log(err)
-				//alert("error", err.response.status);
+				if (err.response) {
+					console.log("error status", err.response.status);
+				} else {
+					console.log("error", err);
+				}
 			}
 		);
 

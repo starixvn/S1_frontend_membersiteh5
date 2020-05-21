@@ -9,6 +9,7 @@ import { i18nContext } from "../context/i18n";
 import { GetTranslationData } from "../../service/api/site";
 import { SetLanguage } from "../../service/api/account";
 import langKeys_Home from "../../datas/langKeys_Home";
+import JoinPanel from "../join/app";
 
 const Header = () => (
 	<header>
@@ -32,7 +33,6 @@ const HeaderBtn = () => {
 
 	const handleLogin = () => {
 		const callbackFunc = (isLogin, userData, langCode) => {
-			console.log(userInfo?.langCode, langCode);
 			if (userInfo?.langCode !== langCode) {
 				GetTranslationData(langKeys_Home, langCode).then(res => {
 					seti18n(res.data.data);
@@ -55,7 +55,7 @@ const HeaderBtn = () => {
 		</div>
 	) : (
 		<div className="headerButton">
-			<button onClick={handleLogin}>JOIN</button>
+			<JoinPanel />
 			<button onClick={handleLogin}>{Geti18n("lbl_Login")}</button>
 		</div>
 	);
@@ -109,7 +109,6 @@ const TestBtn = () => {
 				}}>
 				Dark
 			</button> */}
-			<button onClick={GetLang.bind(null, "en")}>EN</button>
 		</>
 	);
 };
