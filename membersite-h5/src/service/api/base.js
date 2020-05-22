@@ -22,3 +22,8 @@ export const accountRequest = axios.create({
 	withCredentials: true,
 	baseURL: `${rootURL}/api/Account`
 });
+
+export const messageRequest = axios.create({
+	withCredentials: true,
+	baseURL: `${rootURL}/api/Message`
+});

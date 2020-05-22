@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { i18nContext } from "../context/i18n";
 import { userInfoContext } from "../context/userInfo";
+import { popBoxContext } from "../context/popBox";
 import { GetTranslationData } from "../../service/api/site";
 import { isLoggedIn } from "../../service/auth";
 import { navigate } from "gatsby";
@@ -9,7 +10,15 @@ export const Wrapper = ({ children, pageLangKeys, afterLogin }) => {
 	const [userInfo, setUserInfo] = useState({
 		isLogin: isLoggedIn()
 	});
+
 	const [i18n, seti18n] = useState({});
+
+	const [popBox, setPopBox] = useState({
+		isOpen: false,
+		title: "",
+		content: ""
+	});
+
 	useEffect(() => {
 		let mounted = true;
 		GetTranslationData(pageLangKeys).then(
@@ -42,7 +51,9 @@ export const Wrapper = ({ children, pageLangKeys, afterLogin }) => {
 	return (
 		<i18nContext.Provider value={{ i18n, seti18n }}>
 			<userInfoContext.Provider value={{ userInfo, setUserInfo }}>
-				{children}
+				<popBoxContext.Provider value={{ popBox, setPopBox }}>
+					{children}
+				</popBoxContext.Provider>
 			</userInfoContext.Provider>
 		</i18nContext.Provider>
 	);
