@@ -10,6 +10,7 @@ import { GetTranslationData } from "../../service/api/site";
 import { SetLanguage } from "../../service/api/account";
 import langKeys_Home from "../../datas/langKeys_Home";
 import JoinPanel from "../join/app";
+import LoginPanel from "../login/login";
 
 const Header = () => (
 	<header>
@@ -56,7 +57,7 @@ const HeaderBtn = () => {
 	) : (
 		<div className="headerButton">
 			<JoinPanel />
-			<button onClick={handleLogin}>{Geti18n("lbl_Login")}</button>
+			<LoginPanel ButtonTitle={Geti18n("lbl_Login")} />
 		</div>
 	);
 };
